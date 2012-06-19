@@ -1,0 +1,40 @@
+name: DoOdy
+website: http://derpmc.com/
+main: me.angelofdev.DoOdy.DoOdy
+version: 0.4.0
+description: >
+             Separates a player's mod & admin duties so they too can enjoy the game.
+author: AngelofDev
+commands:
+   doody:
+      description: Puts players on Duty mode.
+      aliases: [duty, dm]
+      permission-message: You don't have doody.duty
+permissions:
+   doody.*:
+      description: Gives access to all DoOdy commands.
+      children:
+         doody.duty: true
+         doody.reload: true
+         doody.allowplace: true
+         doody.allowbreak: true
+         doody.dropitems: true
+         doody.storage: true
+   doody.duty:
+      description: Allows access to duty on/off commands
+      default: op
+   doody.reload:
+      description: Allows ingame reloading of config
+      default: op
+   doody.allowplace:
+      description: Allows placing of blocks that are blacklisted in config when on duty
+      default: op
+   doody.allowbreak:
+      description: Allows breaking of blocks that are blacklisted in config when on duty
+      default: op
+   doody.dropitems:
+      description: Allows dropping of items from inventory when on duty
+      default: op
+   doody.storage:
+      description: Allows interaction with storage blocks when on duty
+      default: op
