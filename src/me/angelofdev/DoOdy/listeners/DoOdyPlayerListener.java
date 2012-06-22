@@ -59,20 +59,29 @@ public class DoOdyPlayerListener implements Listener {
 	public static HashMap<String, ItemStack[]> inventory = new HashMap<String, ItemStack[]>();
 	public static HashMap<String, GameMode> duty = new HashMap<String, GameMode>();
 	public static HashMap<String, Location> location = new HashMap<String, Location>();
+	public static HashMap<String, Integer> expOrb = new HashMap<String, Integer>();
 	List<Integer> configDropList = Configuration.config.getIntegerList("Duty Deny Drops.whitelist");
 	List<Integer> configStorageDenied = Configuration.config.getIntegerList("Deny Storage.storage");
 	public static List<Integer> configLbTools = Configuration.config.getIntegerList("Allow.LogBlock.Tools");
 	public static List<Integer> configWeTools = Configuration.config.getIntegerList("Allow.WorldEdit.Tools");
 
-	public static HashMap<String, Integer> expOrb = new HashMap<String, Integer>();
 	
-	@EventHandler
+	@EventHandler(ignoreCancelled=true)
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		String playername = player.getName();
-		if ((!duty.containsKey(playername) && !player.isOp() && player.getGameMode() == GameMode.CREATIVE)) {
+		if (player.getGameMode() == GameMode.CREATIVE) {
+			if (player.isOp() || duty.containsKey(playername)){
+				return;
+			}
 			player.setGameMode(GameMode.SURVIVAL);
 			player.getInventory().clear();
+			if (DoOdyCommandExecutor.myArr.contains(playername)) {
+				DoOdyCommandExecutor.myArr.removeAll(Arrays.asList(playername));
+			}
+			if (expOrb.containsKey(playername)) {
+				expOrb.remove(playername);
+			}
 		}
 	}
 	
