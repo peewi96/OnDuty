@@ -41,13 +41,15 @@ public class DoOdyEntityListener implements Listener {
 			String attackername = attacker.getName();
 			
 			if(DoOdyPlayerListener.duty.containsKey(attackername)) {
-				if (!(event.getEntity() instanceof Player)) {
-					if (Configuration.config.getBoolean("Debug.enabled", true)) {
-						Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Defender is not Player allowing.");
+				if ((Configuration.config.getBoolean("Duty Deny PVP.enabled", true) && !attacker.hasPermission("doody.pvp"))) {
+					if (!(event.getEntity() instanceof Player)) {
+						if (Configuration.config.getBoolean("Debug.enabled", true)) {
+							Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Defender is not Player allowing.");
+						}
+						return;
 					}
-					return;
+					event.setCancelled(true);
 				}
-				event.setCancelled(true);
 			} else {
 				return;
 			}
