@@ -24,6 +24,9 @@ import java.util.Arrays;
 public class Config {
 
 	public static void set(){
+		if(!Configuration.config.contains("Duty Deny PVP.enabled")) {
+			Configuration.config.set("Duty Deny PVP.enabled", true);
+		}
 		if(!Configuration.config.contains("Duty Deny Drops.enabled")) {
 			Configuration.config.set("Duty Deny Drops.enabled", true);
 		}
