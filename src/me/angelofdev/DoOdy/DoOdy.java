@@ -116,10 +116,5 @@ public class DoOdy extends JavaPlugin {
 		} catch (IOException e) {
 		    // Failed to submit the stats :-(
 		}
-	}
-	
-	public DoOdyBlockListener getListener() {
-		return blockListener;
-	}
-	
+	}	
 }
