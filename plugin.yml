@@ -1,10 +1,10 @@
 name: DoOdy
-website: http://derpmc.com/
+website: http://dev.bukkit.org/server-mods/doody-duty/
 main: me.angelofdev.DoOdy.DoOdy
-version: 0.4.0
+version: 0.5.6
 description: >
              Separates a player's mod & admin duties so they too can enjoy the game.
-author: AngelofDev
+authors: [AngelofDev]
 commands:
    doody:
       description: Puts players on Duty mode.
@@ -20,6 +20,10 @@ permissions:
          doody.allowbreak: true
          doody.dropitems: true
          doody.storage: true
+         doody.pvp: true
+         doody.others: true
+         doody.failsafe.bypass: true
+         doody.debug: true
    doody.duty:
       description: Allows access to duty on/off commands
       default: op
@@ -37,4 +41,16 @@ permissions:
       default: op
    doody.storage:
       description: Allows interaction with storage blocks when on duty
+      default: op
+   doody.pvp:
+      description: Allows pvp while on duty
+      default: op
+   doody.others:
+      description: Allows player to put another player on/off duty
+      default: op
+   doody.failsafe.bypass:
+      description: Allows player to bypass doody's failsafe
+      default: op
+   doody.debug:
+      description: Enables access to Debug Commands
       default: op
